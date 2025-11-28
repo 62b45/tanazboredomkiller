@@ -26,6 +26,13 @@ const quickLinks: QuickLink[] = [
     to: '/about#timeline',
   },
   {
+    title: 'Open the game hub',
+    copy: 'Browse 50+ pastel games and unlock the letters vault.',
+    icon: '🕹️',
+    accent: 'mint',
+    to: '/games',
+  },
+  {
     title: 'Start tonight’s quest',
     copy: 'Pick a co-op challenge without opening another app.',
     icon: '🎮',
