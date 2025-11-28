@@ -15,7 +15,7 @@ export function InstallPromptBanner() {
     try {
       setIsPrompting(true)
       const accepted = await promptInstall()
-      setMessage(accepted ? 'Installed! Find Lavender on your home screen.' : 'Install was dismissed. You can try again anytime.')
+      setMessage(accepted ? 'Installed! Find the pixel heart on your home screen.' : 'Install was dismissed. Try again whenever you like.')
       if (accepted) {
         setTimeout(() => setMessage(null), 4000)
       }
@@ -28,29 +28,32 @@ export function InstallPromptBanner() {
   }
 
   return (
-    <aside className="pointer-events-auto fixed bottom-4 left-1/2 z-50 w-[clamp(280px,90vw,520px)] -translate-x-1/2 rounded-[32px] border border-white/60 bg-surface/95 p-5 shadow-card backdrop-blur">
-      <div className="flex flex-col gap-3 text-sm text-ink/80">
-        <div>
-          <p className="text-base font-semibold text-ink">Install Lavender?</p>
-          <p>Pin the experience to your home screen for offline access and instant launches.</p>
-        </div>
-        {message && <p className="text-xs text-ink/60">{message}</p>}
-        <div className="flex flex-wrap gap-3">
-          <button
-            type="button"
-            onClick={handleInstall}
-            disabled={isPrompting}
-            className="rounded-full bg-dusk px-5 py-2 text-sm font-semibold text-white shadow-card disabled:opacity-60"
-          >
-            {isPrompting ? 'Preparing…' : 'Install app'}
-          </button>
-          <button
-            type="button"
-            onClick={dismiss}
-            className="rounded-full border border-ink/15 px-5 py-2 text-sm font-semibold text-ink/70 hover:border-ink/40"
-          >
-            Not now
-          </button>
+    <aside className="pointer-events-none fixed bottom-4 left-1/2 z-40 flex w-full justify-center px-4">
+      <div className="pointer-events-auto w-[min(520px,100%)]">
+        <div className="pixel-border-strong bg-surface/95 px-5 py-4 text-sm shadow-card backdrop-blur">
+          <div className="flex flex-col gap-3 text-ink/80">
+            <div className="flex items-center gap-3">
+              <span aria-hidden className="text-2xl">💾</span>
+              <div>
+                <p className="text-base font-semibold text-ink">Save the Pixel Love Arcade?</p>
+                <p className="text-[0.75rem] uppercase tracking-[0.4em] text-ink/50">Install for offline quests</p>
+              </div>
+            </div>
+            {message && <p className="rounded-2xl bg-blush/50 px-3 py-2 text-xs text-ink">{message}</p>}
+            <div className="flex flex-wrap gap-3">
+              <button
+                type="button"
+                onClick={handleInstall}
+                disabled={isPrompting}
+                className="tap-target flex-1 rounded-2xl bg-ink text-white shadow-lg disabled:opacity-60"
+              >
+                {isPrompting ? 'Preparing…' : 'Install app'}
+              </button>
+              <button type="button" onClick={dismiss} className="tap-target flex-1 rounded-2xl bg-white/70 text-ink/70">
+                Not now
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </aside>

@@ -1,113 +1,206 @@
 import { Link } from 'react-router-dom'
 
-const highlights = [
+import { PixelCard } from '@/components/design/PixelCard'
+
+type QuickLink = {
+  title: string
+  copy: string
+  icon: string
+  accent: 'lavender' | 'mint' | 'blush'
+  to?: string
+  href?: string
+}
+
+const heroStats = [
+  { label: 'Daily logins', value: '2', meta: 'Sunrise + midnight check-ins' },
+  { label: 'Co-op energy', value: '98%', meta: 'After-mission vibe score' },
+  { label: 'Secret achievements', value: '14', meta: 'Waiting to be triggered' },
+]
+
+const quickLinks: QuickLink[] = [
   {
-    title: 'Install-ready shell',
-    copy: 'Service worker precaches the UI shell and fonts so navigation stays instant even on a Vivo Y02a.',
+    title: 'See our timeline',
+    copy: 'Travel through our highlight reel and seasonal events.',
+    icon: '🧭',
+    accent: 'blush',
+    to: '/about#timeline',
   },
   {
-    title: 'Runtime aware caching',
-    copy: 'Static assets use cache-first, while API + media calls fall back to stale-while-revalidate for resiliency.',
+    title: 'Start tonight’s quest',
+    copy: 'Pick a co-op challenge without opening another app.',
+    icon: '🎮',
+    accent: 'mint',
+    href: '#quest-board',
   },
   {
-    title: 'Pastel design tokens',
-    copy: 'Tailwind + CSS variables keep the lavender palette consistent across light and dark surfaces.',
+    title: 'Cue the soundtrack',
+    copy: 'Toggle the quiet synth loop when you reach the About screen.',
+    icon: '🎶',
+    accent: 'lavender',
+    to: '/about#soundtrack',
   },
 ]
 
-const milestones = [
-  { title: 'Audit bundle size', detail: 'Budgeted under 200 KB of JS using Vite visualizer + build plugin guardrails.' },
-  { title: 'Offline UX', detail: 'Dedicated fallback route + static HTML so users get friendly guidance when signal drops.' },
-  { title: 'Install cues', detail: 'beforeinstallprompt hook powers a lightweight banner instead of intrusive modals.' },
+const questModes = [
+  { title: 'Cozy raid', tag: 'Weekend', detail: 'Theme dinner + a new cooperative chapter. Photos required.' },
+  { title: 'Micro quest', tag: 'Weekday', detail: 'Ten-minute afternoon video check-in while doodling the day.' },
+  { title: 'Side mission', tag: 'Anytime', detail: 'Send hourly photo clues until we meet at the café finish line.' },
+]
+
+const highlightCards = [
+  {
+    title: 'Romantic game hub',
+    copy: '720p mobile-first layout with no layout shift between 360px and 1280px, so the experience stays snuggly.',
+    icon: '📱',
+  },
+  {
+    title: 'Heart cursor + tap targets',
+    copy: 'Desktop gets a heart pointer, while every CTA respects a chunky 48px hit area for thumbs.',
+    icon: '🖱️',
+  },
+  {
+    title: 'CSS-only sparkle',
+    copy: 'Particles, shimmer, typing dots, and ribbons rely on transforms + opacity for 60fps-friendly motion.',
+    icon: '✨',
+  },
 ]
 
 export default function Home() {
   return (
-    <section className="px-4 py-12 sm:py-16">
-      <div className="mx-auto flex w-full max-w-6xl flex-col gap-12">
-        <div className="grid gap-10 lg:grid-cols-[1.2fr,0.8fr]">
-          <div className="space-y-6 rounded-[32px] bg-white/80 p-8 shadow-card ring-1 ring-lavender/30 backdrop-blur dark:bg-surface/80">
-            <p className="inline-flex items-center gap-2 rounded-full bg-lavender/20 px-4 py-1 text-xs font-semibold uppercase tracking-wide text-dusk">
-              Fast • Installable • Offline
-            </p>
-            <h1 className="text-4xl font-semibold leading-tight text-ink sm:text-5xl">
-              Lavender is a pastel-first PWA starter for focused, low-bandwidth experiences.
+    <section className="space-y-8">
+      <div className="grid gap-6 lg:grid-cols-[1.15fr,0.85fr]">
+        <PixelCard accent="lavender" shimmer className="space-y-6">
+          <p className="typing-pill">Romantic game hub</p>
+          <div className="space-y-4">
+            <h1 className="text-4xl font-semibold leading-tight text-ink sm:text-[2.8rem]">
+              A pastel pixel lobby for everything co-op and swoon-worthy<span className="typing-caret" />
             </h1>
-            <p className="text-lg text-ink/80">
-              Powered by React 19, Vite, TypeScript, and Tailwind, the scaffold includes routing, caching, install prompts, and
-              Netlify-ready builds without bloating the payload.
+            <p className="text-base text-ink/75">
+              Queue quests, swap love notes, and launch shared rituals without leaving this tiny pastel universe. Designed for 360px
+              to 1280px viewports so mobile mornings and desktop nights feel identical.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link
-                to="/plan"
-                className="inline-flex items-center justify-center rounded-full bg-dusk px-6 py-3 text-sm font-semibold text-white shadow-card transition hover:bg-dusk/90"
-              >
-                View launch plan
-              </Link>
-              <Link
-                to="/offline"
-                className="inline-flex items-center justify-center rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink/80 hover:border-ink/40"
-              >
-                Preview offline UI
-              </Link>
-            </div>
           </div>
-
-          <div className="grid gap-4">
-            <div className="rounded-3xl border border-white/40 bg-surface/80 p-6 shadow-inner backdrop-blur dark:border-ink/20">
-              <p className="text-sm uppercase tracking-wide text-ink/60">Performance budget</p>
-              <div className="mt-3 flex items-baseline gap-2">
-                <span className="text-5xl font-semibold text-ink">200</span>
-                <span className="text-lg font-medium text-ink/70">KB</span>
-              </div>
-              <p className="mt-2 text-sm text-ink/70">
-                Guard rails enforce total JS under 200 KB and surface bundle composition via <code>npm run analyze</code>.
-              </p>
-              <div className="mt-4 h-2 rounded-full bg-ink/10">
-                <span className="block h-full w-[62%] rounded-full bg-lavender" aria-hidden />
-              </div>
-            </div>
-            <div className="rounded-3xl border border-white/30 bg-gradient-to-br from-lavender/40 via-blush/40 to-mint/40 p-6 text-ink shadow-card">
-              <p className="text-sm uppercase tracking-wide text-ink/60">Ready for install</p>
-              <p className="mt-2 text-lg font-medium">Manifest, themed icons, meta tags, and SW registration included out of the box.</p>
-              <ul className="mt-4 space-y-2 text-sm text-ink/80">
-                <li>• Standalone display with lavender chrome.</li>
-                <li>• Offline fallback page + route.</li>
-                <li>• Install banner powered by beforeinstallprompt.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-
-        <div className="grid gap-6 lg:grid-cols-3">
-          {highlights.map((item) => (
-            <article key={item.title} className="rounded-3xl border border-white/40 bg-white/80 p-6 shadow-card backdrop-blur dark:bg-surface/70">
-              <h3 className="text-lg font-semibold text-ink">{item.title}</h3>
-              <p className="mt-2 text-sm text-ink/70">{item.copy}</p>
-            </article>
-          ))}
-        </div>
-
-        <div className="rounded-[32px] border border-white/40 bg-white/80 p-8 shadow-card backdrop-blur dark:bg-surface/70">
-          <div className="flex flex-wrap items-end justify-between gap-4">
-            <div>
-              <p className="text-sm uppercase tracking-wide text-ink/60">Rollout checklist</p>
-              <h2 className="text-2xl font-semibold text-ink">What ships with this scaffold</h2>
-            </div>
-            <Link to="/plan" className="text-sm font-semibold text-dusk hover:underline">
-              Deep dive into the plan →
+          <div className="flex flex-wrap gap-3">
+            <Link to="/about" className="tap-target rounded-2xl bg-ink text-white shadow-lg">
+              Explore About our love
             </Link>
+            <a href="#quick-links" className="tap-target rounded-2xl bg-white/70 text-ink">
+              Jump to quick links
+            </a>
           </div>
-          <div className="mt-6 grid gap-4 md:grid-cols-3">
-            {milestones.map((milestone) => (
-              <div key={milestone.title} className="rounded-3xl border border-ink/10 bg-surface/80 p-5">
-                <p className="text-sm font-semibold uppercase tracking-wide text-ink/60">{milestone.title}</p>
-                <p className="mt-2 text-sm text-ink/75">{milestone.detail}</p>
+          <div className="grid gap-3 sm:grid-cols-3">
+            {heroStats.map((stat) => (
+              <div key={stat.label} className="pixel-border-ghost rounded-2xl bg-white/70 px-4 py-3 text-center">
+                <p className="text-2xl font-semibold text-ink">{stat.value}</p>
+                <p className="text-xs uppercase tracking-[0.35em] text-ink/50">{stat.label}</p>
+                <p className="text-[0.75rem] text-ink/60">{stat.meta}</p>
               </div>
             ))}
           </div>
+        </PixelCard>
+
+        <div className="space-y-4">
+          <PixelCard accent="mint" className="space-y-4">
+            <p className="text-xs uppercase tracking-[0.4em] text-ink/60">Now playing</p>
+            <h2 className="text-2xl font-semibold text-ink">Romantic XP boosters</h2>
+            <ul className="space-y-2 text-sm text-ink/75">
+              <li>• Daily shimmer animation for new notes.</li>
+              <li>• Typing dots show when the other player is drafting a surprise.</li>
+              <li>• Pixel borders keep everything cohesive across cards.</li>
+            </ul>
+          </PixelCard>
+          <PixelCard accent="blush" className="space-y-3">
+            <p className="text-xs uppercase tracking-[0.4em] text-ink/60">Quick cues</p>
+            <div className="flex flex-wrap gap-3 text-sm text-ink/80">
+              <span className="pixel-border rounded-2xl px-4 py-2">Background particles only use transforms.</span>
+              <span className="pixel-border rounded-2xl px-4 py-2">Tap targets ≥ 48px, tested on thumbs.</span>
+            </div>
+          </PixelCard>
         </div>
       </div>
+
+      <section id="quick-links" className="space-y-4">
+        <div className="flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+          <div>
+            <p className="text-xs uppercase tracking-[0.35em] text-ink/60">Quick links</p>
+            <h2 className="text-2xl font-semibold text-ink">Jump into cozy rituals fast</h2>
+          </div>
+          <div className="typing-dots" aria-hidden>
+            <span />
+            <span />
+            <span />
+          </div>
+        </div>
+        <div className="grid gap-4 md:grid-cols-3">
+          {quickLinks.map((link) => {
+            const content = (
+              <>
+                <span aria-hidden className="text-3xl">{link.icon}</span>
+                <div className="space-y-1">
+                  <h3 className="text-lg font-semibold text-ink">{link.title}</h3>
+                  <p className="text-sm text-ink/75">{link.copy}</p>
+                </div>
+                <span className="text-xs uppercase tracking-[0.35em] text-ink/60">Open</span>
+              </>
+            )
+
+            if (link.to) {
+              return (
+                <PixelCard
+                  key={link.title}
+                  as={Link}
+                  to={link.to}
+                  accent={link.accent}
+                  className="tap-target h-full flex flex-col items-start gap-3 rounded-[1.75rem] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender"
+                >
+                  {content}
+                </PixelCard>
+              )
+            }
+
+            return (
+              <PixelCard
+                key={link.title}
+                as="a"
+                href={link.href}
+                accent={link.accent}
+                className="tap-target h-full flex flex-col items-start gap-3 rounded-[1.75rem] text-left focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-lavender"
+              >
+                {content}
+              </PixelCard>
+            )
+          })}
+        </div>
+      </section>
+
+      <section id="quest-board" className="grid gap-4 lg:grid-cols-[0.8fr,1.2fr]">
+        <PixelCard accent="ink" className="space-y-4">
+          <p className="text-xs uppercase tracking-[0.4em] text-white/70">Quest board</p>
+          <h2 className="text-2xl font-semibold text-white">Tonight&apos;s co-op menu</h2>
+          <p className="text-sm text-white/80">Pick a mission, screenshot it, and send it with a sparkle emoji to lock it in.</p>
+          <ul className="space-y-3">
+            {questModes.map((quest) => (
+              <li key={quest.title} className="rounded-2xl border border-white/20 bg-white/5 p-4">
+                <div className="flex items-center justify-between text-sm font-semibold text-white">
+                  <span>{quest.title}</span>
+                  <span className="text-xs uppercase tracking-[0.35em] text-white/70">{quest.tag}</span>
+                </div>
+                <p className="mt-2 text-sm text-white/80">{quest.detail}</p>
+              </li>
+            ))}
+          </ul>
+        </PixelCard>
+
+        <div className="grid gap-4 md:grid-cols-2">
+          {highlightCards.map((card) => (
+            <PixelCard key={card.title} accent="mint" className="space-y-2">
+              <span aria-hidden className="text-2xl">{card.icon}</span>
+              <h3 className="text-lg font-semibold text-ink">{card.title}</h3>
+              <p className="text-sm text-ink/75">{card.copy}</p>
+            </PixelCard>
+          ))}
+        </div>
+      </section>
     </section>
   )
 }
