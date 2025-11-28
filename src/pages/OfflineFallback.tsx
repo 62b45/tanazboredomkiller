@@ -1,28 +1,31 @@
 import { Link } from 'react-router-dom'
 
+import { PixelCard } from '@/components/design/PixelCard'
+
 export default function OfflineFallback() {
   return (
     <section className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-12 text-center">
-      <div className="max-w-xl space-y-6 rounded-[32px] border border-ink/10 bg-white/90 p-8 shadow-card backdrop-blur dark:bg-surface/80">
-        <p className="text-sm font-semibold uppercase tracking-[0.3em] text-ink/60">Offline friendly</p>
-        <h1 className="text-3xl font-semibold text-ink">You&apos;re offline, but the experience continues.</h1>
+      <PixelCard accent="mint" className="max-w-xl space-y-5">
+        <p className="typing-pill">Offline safe mode</p>
+        <h1 className="text-3xl font-semibold text-ink">You&apos;re offline, but our pastel lobby is cached.</h1>
         <p className="text-base text-ink/70">
-          All the core screens are cached locally. When your connection returns we will sync the latest content automatically.
+          The entire shell, fonts, icons, and this page live locally. Once signal returns we&apos;ll sync any queued notes and continue the
+          cozy rituals without a hiccup.
         </p>
-        <ul className="space-y-3 text-sm text-ink/75">
-          <li>• Cached shell + fonts keep navigation instant.</li>
-          <li>• Runtime caching serves images and documents you already opened.</li>
-          <li>• This page is also available as `/offline.html` for hard reloads.</li>
+        <ul className="space-y-2 text-sm text-ink/75">
+          <li>• Background music toggle waits for a connection before fetching audio.</li>
+          <li>• Quick links still load because they point to already cached routes.</li>
+          <li>• `/offline.html` remains available for hard reloads outside the app shell.</li>
         </ul>
         <div className="flex flex-wrap justify-center gap-3">
-          <Link to="/" className="rounded-full bg-dusk px-6 py-3 text-sm font-semibold text-white shadow-card">
-            Go back online view
+          <Link to="/" className="tap-target rounded-2xl bg-ink text-white shadow-card">
+            Back to home base
           </Link>
-          <Link to="/plan" className="rounded-full border border-ink/15 px-6 py-3 text-sm font-semibold text-ink/80">
-            Review rollout plan
+          <Link to="/about" className="tap-target rounded-2xl bg-white/70 text-ink">
+            Peek at the timeline
           </Link>
         </div>
-      </div>
+      </PixelCard>
     </section>
   )
 }
