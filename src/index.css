@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+  --color-lavender: 189 168 255;
+  --color-blush: 255 209 235;
+  --color-mint: 192 245 221;
+  --color-sand: 255 247 234;
+  --color-dusk: 91 76 255;
+  --color-surface: 248 246 255;
+  --color-ink: 32 23 62;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --color-surface: 18 16 34;
+    --color-ink: 244 242 255;
+  }
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    @apply bg-surface text-ink font-display antialiased m-0 min-h-dvh;
+    font-feature-settings: 'liga' 1, 'kern' 1;
+  }
+
+  #root {
+    min-height: 100vh;
+  }
+
+  ::selection {
+    background-color: rgba(189, 168, 255, 0.4);
+  }
+}
