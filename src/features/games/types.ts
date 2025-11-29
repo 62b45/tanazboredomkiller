@@ -18,6 +18,22 @@ export type MiniGameResolverKey =
   | 'emoji-forage'
   | 'harmony-sum'
   | 'story-spark'
+  | 'slide-puzzle'
+  | 'color-match'
+  | 'line-connect'
+  | 'number-swap'
+  | 'path-finder'
+  | 'merge-tiles'
+  | 'rotate-tiles'
+  | 'tic-tac-toe'
+  | 'connect-four'
+  | 'rock-paper-scissors'
+  | 'checkers-lite'
+  | 'dots-and-boxes'
+  | 'memory-flip'
+  | 'emoji-match'
+  | 'sequence-repeat'
+  | 'fast-recall'
 
 export type GameDefinition = {
   id: string
